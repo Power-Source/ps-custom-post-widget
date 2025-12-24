@@ -1,4 +1,4 @@
-=== PS Custom Posts Type Widget ===
+=== PS-Beitrags-Widget ===
 Contributors: PSOURCE
 Tags: widget, custom,post, wordpress, classicpress
 Requires at least: 4.9

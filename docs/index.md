@@ -1,53 +1,55 @@
 ---
 layout: psource-theme
-title: "PS BeitragsAds"
+title: "PS-Beitrags-Widget"
 ---
 
-<h2 align="center" style="color:#38c2bb;">📚 PS BeitragsAds</h2>
+<h2 align="center" style="color:#38c2bb;">📚 PS-Beitrags-Widget</h2>
 
 <div class="menu">
-  <a href="https://github.com/cp-psource/in-post-ads/discussions" style="color:#38c2bb;">💬 Forum</a>
-  <a href="https://github.com/cp-psource/in-post-ads/releases" style="color:#38c2bb;">📝 Download</a>
+  <a href="https://github.com/Power-Source/ps-custom-post-widget/releases" style="color:#38c2bb;">📝 Download</a>
 </div>
 
-Definiere benutzerdefinierte Werbeanzeigen für Beitragstypen und mehr, das einfachste Werkzeug um effektiv Werbeanzeigen zu schalten.
+# PS-Beitrags-Widget
 
-## PS BeitragsAds platziert Anzeigen dort, wo Nutzer am meisten mit Ihren Inhalten interagieren.
+Ermöglicht die Anzeige von benutzerdefinierten Beitragstypen und normalen Beiträgen mit Beitragsbildern und Auszügen als Widget.
 
-Besucher können für Banner- und Seitenleistenwerbung blind sein. PS BeitragsAds löst dieses Problem, indem es unauffällige Anzeigen in den Inhalt Deiner Webseite einfügt.
+## Mit „PS-Widget für benutzerdefinierte Beiträge“ kannst Du in jedem Widget-Bereich Deiner Webseite eine Liste benutzerdefinierter Beiträge anzeigen.
 
-![Einfache Anzeigen, die mit Deinen Inhalten harmonieren.](assets/images/inpostad-700x447.jpg)
+Es ist einfach, aktuelle Beiträge hinzuzufügen, aber wie sieht es mit benutzerdefinierten Beitragstypen aus? Dieses Plugin fügt Deiner Webseite ein Widget hinzu, um aktuelle Beiträge aller Beitragstypen anzuzeigen.
 
-  Einfache Anzeigen, die den Inhalt Deines Beitrags ergänzen.
+![PS-Widget für benutzerdefinierte Beiträge](https://n3rds.work/wp-content/uploads/2024/01/post-types.png)
 
-### Werbung, die nicht nervt
+  Zeige Deine neuesten Produkte, Kleinanzeigen oder andere benutzerdefinierte Beitragstypen an.
 
-PS BeitragsAds verwendet genau die richtige Menge an Pop, ohne Deinen Inhalt zu beeinträchtigen. Beginne mit einem integrierten Stil oder erstelle einen benutzerdefinierten Look. Biete angemeldeten Nutzern ein werbefreies Leseerlebnis und ermutige Besucher zum Upgrade.
+### Einfaches anpassbares Widget
 
-![Unglaubliche, einfache Steuerelemente für die Anzeige von Anzeigen basierend auf Deinen spezifischen Anforderungen. ](assets/images/display-settings-735x470-700x447.jpg)
+„PS-Widget für benutzerdefinierte Beiträge“ funktioniert mit jedem benutzerdefinierten Beitragstyp, sogar mit Beitragstypen, die von einem anderen Plugin erstellt wurden.
 
-  Unglaubliche, einfache Steuerelemente zum Anzeigen von Anzeigen basierend auf Deinen spezifischen Anforderungen.
+##### Zu den Anpassungsoptionen gehören:
 
-### Echte Kontrolle
+* Widget-Titel
+* Beitragstyp, einschließlich Kernbeitrags-, Seiten- und Anhangstypen
+* Bis zu 20 Beiträge
+* Füge Dein vorgestelltes Bild als Miniaturansicht für jeden Beitrag hinzu
 
-Füge Anzeigen dort ein, wo Du möchteat, nach dem Zufallsprinzip oder in einer vordefinierten Reihenfolge. Löse die Anzeige mithilfe von Kategorien, Tags und Beitragstypen aus. Schalte Anzeigen direkt bei der Veröffentlichung eines Beitrags oder erst, nachdem er einige Tage online war.
+Außerdem kannst Du so viele Instanzen des Widgets erstellen, wie Du für verschiedene benutzerdefinierte Beitragstypen benötigst.
 
-![Vermarkte wie ein Profi mit integrierten A/B-Tests.](assets/images/A-B-testing-735x470.jpg)
+### Integration mit anderen PSOURCE Plugins
 
-  Vermarkte wie ein Profi mit integrierten A/B-Tests.
-
-### Finde heraus, was am besten funktioniert
-
-Erziele höhere Conversion-Raten mit integrierten A/B-Tests. Teste zwei völlig unterschiedliche Konfigurationen und finde heraus, welche Anzeigen an welcher Stelle am besten funktionieren. Integriere Google Analytics, um das ultimative WordPress-Marketingerlebnis zu schaffen.
-
-Generiere mehr Umsatz und steigere den Umsatz, indem Du mit PS BeitragsAds automatisch Anzeigen in Deine Beiträge einfügst.
 
 ## Verwendung
 
+* Bei regulären WordPress-Installationen – besuche **Plugins** und aktiviere das Plugin.
+* Für WordPress-Multisite-Installationen: Aktiviere es Webseite für Webseite (z.B. wenn Du es zu einem Premium-Plugin für Bloghosting machen möchtest) oder besuche **Netzwerkadministrator -> Plugins** und aktiviere das Plugin im Netzwerk.
 
-### **Installieren:**
+### Benutzen:
 
-- Gehe nach der Aktivierung zum PS-BeitragsAds-Menü, um die Einstellungen anzupassen.
+1\. Gehe im Webseiten-Admin-Dashboard zu **Darstellung -> Widgets**. 2\. Ziehe das neue Widget „Letzte benutzerdefinierte Beiträge“ in Deine Seitenleiste.
 
-![PS BeitragsAds-Einstellungen](assets/images/inpost-add-new.jpg)
+![Bild](https://n3rds.work/wp-content/uploads/2024/01/customwidget63.jpg)
 
+  3\. Konfiguriere das Widget und wähle Deinen benutzerdefinierten Beitragstyp aus.
+
+![Bild](https://n3rds.work/wp-content/uploads/2024/01/customwidget61.jpg)
+
+  4\. Besuche Deine Homepage, um das neue Widget in Aktion zu sehen!

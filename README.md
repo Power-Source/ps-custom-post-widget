@@ -1,4 +1,4 @@
-# PS-Widget für benutzerdefinierte Beiträge
+# PS-Beitrags-Widget
 
 Ermöglicht die Anzeige von benutzerdefinierten Beitragstypen und normalen Beiträgen mit Beitragsbildern und Auszügen als Widget.
 

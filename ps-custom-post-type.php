@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: PS Custom Posts Type Widget
-Plugin URI: https://n3rds.work/piestingtal_source/ps-custom-post-widget/
+Plugin Name: PS-Beitrags-Widget
+Plugin URI: https://power-source.github.io/ps-custom-post-widget/
 Description: Ermöglicht die Anzeige von benutzerdefinierten Beitragstypen und normalen Beiträgen mit Beitragsbildern und Auszügen als Widget.
 Version: 1.0.5
-Author: WMS N@W
+Author: PSOURCE
 Author URI: https://github.com/Power-Source
 
 
