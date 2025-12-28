@@ -3,7 +3,7 @@
 Plugin Name: PS-Beitrags-Widget
 Plugin URI: https://power-source.github.io/ps-custom-post-widget/
 Description: Ermöglicht die Anzeige von benutzerdefinierten Beitragstypen und normalen Beiträgen mit Beitragsbildern und Auszügen als Widget.
-Version: 1.0.5
+Version: 1.0.6
 Author: PSOURCE
 Author URI: https://github.com/Power-Source
 
@@ -108,6 +108,10 @@ class RcptWidget extends WP_Widget {
         $show_body       = isset( $instance['show_body'] ) ? (int) $instance['show_body'] : 0;
         $show_thumbs     = isset( $instance['show_thumbs'] ) ? esc_attr( $instance['show_thumbs'] ) : '';
         $show_dates      = isset( $instance['show_dates'] ) ? esc_attr( $instance['show_dates'] ) : '';
+        $excerpt_length  = isset( $instance['excerpt_length'] ) ? absint( $instance['excerpt_length'] ) : 20;
+        $excerpt_unit    = isset( $instance['excerpt_unit'] ) ? esc_attr( $instance['excerpt_unit'] ) : 'words';
+        $readmore_text   = isset( $instance['readmore_text'] ) ? esc_attr( $instance['readmore_text'] ) : esc_html__( 'Weiterlesen…', 'rcpt' );
+
     
         $fields = isset( $instance['fields'] ) ? $instance['fields'] : array();
         $fields = $fields ? $fields : array();
@@ -119,7 +123,7 @@ class RcptWidget extends WP_Widget {
 		$post_types   = get_post_types( array( 'public' => true ), 'objects' );
 		$post_authors = $this->_get_post_authors();
 
-		$html = '<p>';
+        $html = '<p>';
         $html .= '<label for="' . esc_attr( $this->get_field_id( 'title' ) ) . '">' . esc_html__( 'Titel:', 'rcpt' ) . '</label>';
         $html .= '<input type="text" name="' . esc_attr( $this->get_field_name( 'title' ) ) . '" id="' . esc_attr( $this->get_field_id( 'title' ) ) . '" class="widefat" value="' . $title . '"/>';
         $html .= '</p>';
@@ -190,10 +194,26 @@ class RcptWidget extends WP_Widget {
             ' <label for="' . esc_attr( $this->get_field_id( 'titles_as_links' ) ) . '">' . esc_html__( 'Titel und Links zu Beiträgen', 'rcpt' ) . '</label> ' .
             '</small></p>';
 
-			$html .= '<p>' .
-            '<input type="checkbox" name="' . esc_attr( $this->get_field_name( 'show_body' ) ) . '" id="' . esc_attr( $this->get_field_id( 'show_body' ) ) . '" value="1" ' . checked( 1, $show_body, false ) . '/>' .
-            ' <label for="' . esc_attr( $this->get_field_id( 'show_body' ) ) . '">' . esc_html__( 'Auszüge zeigen', 'rcpt' ) . '</label> ' .
-            '</p>';
+            $html .= '<p>' .
+                '<input type="checkbox" name="' . esc_attr( $this->get_field_name( 'show_body' ) ) . '" id="' . esc_attr( $this->get_field_id( 'show_body' ) ) . '" value="1" ' . checked( 1, $show_body, false ) . '/>' .
+                ' <label for="' . esc_attr( $this->get_field_id( 'show_body' ) ) . '">' . esc_html__( 'Auszüge zeigen', 'rcpt' ) . '</label> ' .
+                '</p>';
+
+            // Weiterlesen-Text direkt darunter
+            $html .= '<p style="margin-left:2em">';
+            $html .= '<label for="' . esc_attr( $this->get_field_id( 'readmore_text' ) ) . '">' . esc_html__( 'Weiterlesen-Link-Text:', 'rcpt' ) . '</label> ';
+            $html .= '<input type="text" name="' . esc_attr( $this->get_field_name( 'readmore_text' ) ) . '" id="' . esc_attr( $this->get_field_id( 'readmore_text' ) ) . '" value="' . $readmore_text . '" class="widefat" placeholder="' . esc_attr__( 'Weiterlesen…', 'rcpt' ) . '" />';
+            $html .= '</p>';
+
+        // Auszugslänge und Einheit
+        $html .= '<p style="margin-left:2em">';
+        $html .= '<label for="' . esc_attr( $this->get_field_id( 'excerpt_length' ) ) . '">' . esc_html__( 'Auszugslänge:', 'rcpt' ) . '</label> ';
+        $html .= '<input type="number" min="1" style="width:60px" name="' . esc_attr( $this->get_field_name( 'excerpt_length' ) ) . '" id="' . esc_attr( $this->get_field_id( 'excerpt_length' ) ) . '" value="' . $excerpt_length . '" /> ';
+        $html .= '<select name="' . esc_attr( $this->get_field_name( 'excerpt_unit' ) ) . '" id="' . esc_attr( $this->get_field_id( 'excerpt_unit' ) ) . '">';
+        $html .= '<option value="words"' . ( $excerpt_unit === 'words' ? ' selected' : '' ) . '>' . esc_html__( 'Wörter', 'rcpt' ) . '</option>';
+        $html .= '<option value="chars"' . ( $excerpt_unit === 'chars' ? ' selected' : '' ) . '>' . esc_html__( 'Zeichen', 'rcpt' ) . '</option>';
+        $html .= '</select>';
+        $html .= '</p>';
 
         $html .= '<p>' .
             '<input type="checkbox" name="' . esc_attr( $this->get_field_name( 'show_dates' ) ) . '" id="' . esc_attr( $this->get_field_id( 'show_dates' ) ) . '" value="1" ' . checked( 1, $show_dates, false ) . '/>' .
@@ -202,7 +222,7 @@ class RcptWidget extends WP_Widget {
 
         $html .= '<p>' .
             '<input type="checkbox" name="' . esc_attr( $this->get_field_name( 'show_thumbs' ) ) . '" id="' . esc_attr( $this->get_field_id( 'show_thumbs' ) ) . '" value="1" ' . checked( 1, $show_thumbs, false ) . '/>' .
-            ' <label for="' . esc_attr( $this->get_field_id( 'show_thumbs' ) ) . '">' . esc_html__( 'Beitragbilder zeigen <small>(falls verfügbar)</small>', 'rcpt' ) . '</label> ' .
+            ' <label for="' . esc_attr( $this->get_field_id( 'show_thumbs' ) ) . '">' . wp_kses_post( __( 'Beitragbilder zeigen <small>(falls verfügbar)</small>', 'rcpt' ) ) . '</label> ' .
             '</p>';
 
 		// Custom fields
@@ -292,7 +312,10 @@ class RcptWidget extends WP_Widget {
         $instance['titles_as_links'] = isset( $new_instance['titles_as_links'] ) ? 1 : 0;
         $instance['show_body']       = isset( $new_instance['show_body'] ) ? 1 : 0;
         $instance['show_thumbs']     = isset( $new_instance['show_thumbs'] ) ? 1 : 0;
-        $instance['show_dates']      = isset( $new_instance['show_dates'] ) ? 1 : 0;
+		$instance['show_dates']      = isset( $new_instance['show_dates'] ) ? 1 : 0;
+        $instance['excerpt_length']  = isset( $new_instance['excerpt_length'] ) ? absint( $new_instance['excerpt_length'] ) : 20;
+        $instance['excerpt_unit']    = isset( $new_instance['excerpt_unit'] ) && in_array( $new_instance['excerpt_unit'], array('words','chars') ) ? $new_instance['excerpt_unit'] : 'words';
+        $instance['readmore_text']   = isset( $new_instance['readmore_text'] ) ? sanitize_text_field( $new_instance['readmore_text'] ) : '';
 
         $instance['fields'] = array();
         $fields             = $new_instance['fields'];
@@ -325,6 +348,9 @@ class RcptWidget extends WP_Widget {
         $show_body       = isset( $instance['show_body'] ) ? (bool) $instance['show_body'] : false;
         $show_thumbs     = isset( $instance['show_thumbs'] ) ? (bool) $instance['show_thumbs'] : false;
         $show_dates      = isset( $instance['show_dates'] ) ? (bool) $instance['show_dates'] : false;
+        $excerpt_length  = isset( $instance['excerpt_length'] ) ? absint( $instance['excerpt_length'] ) : 20;
+        $excerpt_unit    = isset( $instance['excerpt_unit'] ) ? $instance['excerpt_unit'] : 'words';
+        $readmore_text   = isset( $instance['readmore_text'] ) && $instance['readmore_text'] !== '' ? $instance['readmore_text'] : esc_html__( 'Weiterlesen…', 'rcpt' );
     
         $fields = isset( $instance['fields'] ) ? $instance['fields'] : array();
         $fields = $fields ? $fields : array();
@@ -402,7 +428,23 @@ class RcptWidget extends WP_Widget {
                 echo '<li>';
                 echo $final_item_title_str;
                 if ( $show_body ) {
-                    echo '<div class="rcpt_item_excerpt">' . wp_kses_post( get_the_excerpt() ) . '</div>';
+                    $excerpt = get_the_excerpt();
+                    if ( $excerpt_length > 0 ) {
+                        if ( $excerpt_unit === 'chars' ) {
+                            if ( mb_strlen( $excerpt ) > $excerpt_length ) {
+                                $excerpt = mb_substr( $excerpt, 0, $excerpt_length ) . '…';
+                            }
+                        } else {
+                            $words = preg_split( '/\s+/', $excerpt );
+                            if ( count( $words ) > $excerpt_length ) {
+                                $excerpt = implode( ' ', array_slice( $words, 0, $excerpt_length ) ) . '…';
+                            }
+                        }
+                    }
+                    echo '<div class="rcpt_item_excerpt">' . wp_kses_post( $excerpt ) . '</div>';
+                    if ( $readmore_text ) {
+                        echo '<div class="rcpt_item_readmore"><a href="' . esc_url( get_permalink() ) . '">' . esc_html( $readmore_text ) . '</a></div>';
+                    }
                 }
                 if ( $show_dates ) {
                     echo '<span class="rcpt_item_date"><span class="rcpt_item_posted">' . esc_html__( 'Veröffentlicht am', 'rcpt' ) . ' </span>' . esc_html( get_the_date() ) . '</span>';

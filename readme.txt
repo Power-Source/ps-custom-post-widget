@@ -3,7 +3,7 @@ Contributors: PSOURCE
 Tags: widget, custom,post, wordpress, classicpress
 Requires at least: 4.9
 Tested up to: 4.9
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -20,7 +20,13 @@ Zeige Deine neuesten Produkte, Kleinanzeigen oder andere benutzerdefinierte Beit
 
 == ChangeLog ==
 
-= 1.0.5 =
+= 1.0.6 =
+
+* Weitere Optionen hinzugefügt
+* Fehlerhafte HTML Anzeige korrigiert
+* CSS Optimierung
+
+= 1.0.6 =
 
 * Fix: Undefined array key
 * +po FR/IT/US

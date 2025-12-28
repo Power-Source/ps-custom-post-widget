@@ -8,6 +8,11 @@ ul.rcpt_items_list li dl.rcpt_item_custom_fields {
 ul.rcpt_items_list li {
 	margin-bottom: .4em;
 }
+ul.rcpt_items_list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
 ul.rcpt_items_list li span {
 	display: block;
 }
